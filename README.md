@@ -1,27 +1,34 @@
 # Team14
----
-
-### IMPLEMENTATION TIPS
-
-* Controllers contain functions that are called by view, they perform queries through the models
-* Variable names should be standard, let's use the python standard notation like: "variable_name" where variables are explanatory and clean, rather a bit longer than unrdble lk ths
-* if anyone has to add functions please tell the team because maybe that functionality is already implemented somewhere else
-* controllers should stay skinny
+## Research Notes App
+Developed for Software Hut COM3420 course running in 2020/2021
 
 ### Description
-Describe your app here...
+Welcome to the Luhmann’s Slip-box Note Taking System. This is a note-taking system inspired by Niklas Luhmann’s method of taking notes, which involves writing ideas down onto cards, and organising and connecting them together in threads that can branch out into a network of interconnected ideas. The main benefits of this note-taking method are that you increase your understanding of the connections between notes, as you have to focus on where the best place is to add a new note so that it fits most appropriately with the already existing notes, which reinforces the connection in your mind.
 
-### Significant Features/Technology
-The system has the following:
+### Running the Application
+To launch the system locally run the following commands from the root of this project directory in a Bash terminal of your choice:
+```
+bundle install
 
-* Some significant thing...
-* Another one...
+sudo service postgresql start
 
-### Special Development Pre-requisites
-None.
+sudo systemctl enable postgresql
 
-### Deployment
-*QA -> Demo -> Production* using the `epi-deploy` gem.
+bundle exec rake db:create
 
-### Customer Contact
-Some Customer <some.customer@epigenesys.co.uk>
+bundle exec rake db:migrate
+
+bundle exec rake db:seed
+
+bundle exec rails s
+```
+
+A demo of the application is available at:
+https://team14.demo2.hut.shefcompsci.org.uk/ 
+
+### Access for University of Sheffield members only
+Users are required to log in with their University of Sheffield credentials in order to benefit from using our note-taking application
+
+### User instructions
+A guide on how to use the system can be found in the "Info" section of the application.
+

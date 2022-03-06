@@ -1,0 +1,26 @@
+-# tags/ index.html.haml
+-# tags manager page
+-# tags overview table includes tags'name
+
+.card.pb-2.px-2
+  .card-body
+    %h3.card-title.text-center.mb-3 Tag Manager
+    .table-wrapper-scroll-y.my-custom-scrollbar
+      %table.table.table-hover
+        %thead
+          %tr
+            %th.text-center Name
+            %th.text-center Actions
+
+        %tbody
+          - @tags.each do |tag|
+            %tr
+              %td.text-center.align-middle= (tag.tag_name).truncate(60)
+              %td.text-center
+                %div
+                  = link_to edit_tag_path(tag), class: "btn btn-success mr-1" do
+                    %i.far.fa-edit
+                  = link_to tag, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" do
+                    %i.far.fa-trash-alt
+
+    = link_to 'New Tag', new_tag_path, class: "btn btn-primary mt-3"

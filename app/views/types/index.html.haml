@@ -1,0 +1,29 @@
+-# tags/ index.html.haml
+-# tags manager page
+-# tags overview table includes types' color
+
+.card.pb-2.px-2
+  .card-body
+    %h3.card-title.text-center.mb-3 Type Manager
+    .table-wrapper-scroll-y.my-custom-scrollbar
+      %table.table.table-hover
+        %thead
+          %tr
+            %th Name 
+            %th.text-center Color
+            %th.text-center Actions
+
+        %tbody
+          - @types.each do |type|
+            %tr
+              %td.align-middle= (type.type_name).truncate(60)
+              %td.align-middle.text-center.w-25
+                .card.card-text{style: "background-color: #{type.colour_code}"} Notes of this type will look like this.
+              %td.align-middle.text-center
+                %div
+                  = link_to edit_type_path(type), class: "btn btn-success mr-1" do
+                    %i.far.fa-edit
+                  = link_to type, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" do
+                    %i.far.fa-trash-alt
+
+    = link_to 'New Type', new_type_path, class: "btn btn-primary"

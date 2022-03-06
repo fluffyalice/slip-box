@@ -1,0 +1,79 @@
+/* home.html.haml */
+.card.mb-3{
+    .card-body{
+        .text-right{
+            padding-bottom: 25px;
+        }
+    }
+}
+
+
+
+/* reference_manager.html.haml */
+.my-custom-scrollbar {
+    position: relative;
+    height: 420px;
+    overflow: auto;
+}
+
+.table-wrapper-scroll-y {
+    display: block;
+}
+
+// notes
+.note {
+    height: 220px;
+    width: 300px;
+}
+
+.truncate-six-rows {
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.scrolling-wrapper{
+	overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+
+    .card {
+        display: inline-block;
+    }
+}
+
+.dropdown-menu.dropdown-menu-right{
+    left: 800px;
+    right: 600px;
+}
+
+// .scrolling-wrapper {
+//     display: flex;
+//     flex-wrap: nowrap;
+//     overflow-x: auto;
+.note {
+    cursor: pointer;
+}
+
+.card-input-element:checked + .note {
+     box-shadow: 0 0 1px 1px #343a40;
+ }
+
+
+.note, .note:hover {
+    text-decoration: none;
+}
+  
+.note:hover {
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-header{
+    padding-top: 10px;
+}
+
+.collapse.navbar-collapse#navbar-content{
+    padding-top: 13px;
+}

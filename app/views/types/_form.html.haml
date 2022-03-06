@@ -1,0 +1,15 @@
+-# types/_form.html.haml
+-# rendered to edit and new page
+-# forms include card types' name and card types' color
+
+= simple_form_for(@type) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+  = f.input :type_name, required: true
+  = f.input :colour_code, as: :color, :label => "Color", :hint => 'The selected color will be the background color, we recommend choosing pastel colors for easier readability.', input_html: { :value => @type.colour_code } 
+ 
+  .form-actions
+    = f.button :submit, class: "btn-success mb-1"
+    = link_to 'Cancel', types_path, class: "btn btn-primary float-right"

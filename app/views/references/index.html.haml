@@ -1,0 +1,31 @@
+-# references/ index.html.haml
+-# Reference manager page
+-# reference overview table includes author, year and title
+
+.card.pb-2.px-2
+  .card-body
+    %h3.card-title.text-center.mb-3 Reference Manager
+    .table-wrapper-scroll-y.my-custom-scrollbar
+      %table.table.table-hover
+        %thead
+          %tr
+            %th Author(s)
+            %th Year
+            %th Title
+            %th.text-center Actions
+
+        %tbody
+          - @references.each do |reference|
+            %tr
+              %td.align-middle=(reference.author).truncate(25)
+              %td.align-middle=reference.year
+              %td.align-middle=(reference.title).truncate(30)
+              %td.text-center
+                %div
+                  = link_to edit_reference_path(reference), class: "btn btn-success mr-1" do
+                    %i.far.fa-edit
+                  = link_to reference, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" do
+                    %i.far.fa-trash-alt
+      %br
+
+    = link_to 'New Reference', new_reference_path, class: "btn btn-primary"

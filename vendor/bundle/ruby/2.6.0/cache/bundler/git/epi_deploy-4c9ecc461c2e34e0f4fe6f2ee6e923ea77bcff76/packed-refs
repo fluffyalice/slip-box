@@ -1,0 +1,9 @@
+# pack-refs with: peeled fully-peeled sorted 
+28b13bbae1c99d9bbdc530029aa56e13ad6beaec refs/heads/github-ci
+5aea3810487bec1f5e287303df32f152a9b135e3 refs/heads/master
+08eeca5cd9e1a0db7803343dfe6c7764764f0217 refs/heads/multi-customers
+9a36e08a6f86ade5106bade72cc0737952dc5da1 refs/heads/support-main
+d27a595e945f7744f51353d31b016dfbdf3c8df4 refs/heads/target-env
+36249d407edeaa3f44f9dc430c7b4ba9474c28df refs/heads/ticket_workflow
+6357f5ef618fe1c2cf6bf3b58956f02ed881c917 refs/tags/example_tag
+^34bf3576c9b51607c91696911279886afa156cd9

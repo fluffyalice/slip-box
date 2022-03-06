@@ -1,0 +1,15 @@
+current directory: /Users/nicolamendini/Desktop/notes_softhut/project/vendor/bundle/ruby/2.6.0/gems/bootsnap-1.7.3/ext/bootsnap
+/Users/nicolamendini/.rbenv/versions/2.6.6/bin/ruby -I /Users/nicolamendini/.rbenv/versions/2.6.6/lib/ruby/2.6.0 -r ./siteconf20210414-67880-1efj562.rb extconf.rb
+creating Makefile
+
+current directory: /Users/nicolamendini/Desktop/notes_softhut/project/vendor/bundle/ruby/2.6.0/gems/bootsnap-1.7.3/ext/bootsnap
+make "DESTDIR=" clean
+
+current directory: /Users/nicolamendini/Desktop/notes_softhut/project/vendor/bundle/ruby/2.6.0/gems/bootsnap-1.7.3/ext/bootsnap
+make "DESTDIR="
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.bundle
+
+current directory: /Users/nicolamendini/Desktop/notes_softhut/project/vendor/bundle/ruby/2.6.0/gems/bootsnap-1.7.3/ext/bootsnap
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bootsnap.bundle ./.gem.20210414-67880-ev63xz/bootsnap

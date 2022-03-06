@@ -1,0 +1,87 @@
+ 
+-# SEARCH FUNCTIONALITY
+.d-flex.justify-content-between.align-items-center
+  %h3.card-title.mb-0.mx-3 Search
+  .d-flex.justify-content-end.align-items-center
+    .input-group.mr-1
+      -# = render 'search_form'
+      .form.form-inline
+        = form_tag :controller => :notes, :action => :search do
+          =select_tag :tag, options_from_collection_for_select(current_user.tags.all, :id, lambda { |tag| "#{tag.tag_name}".truncate(20)}), prompt:"Select Tag", class: "form-control"
+          =select_tag :reference, options_from_collection_for_select(current_user.references.all, :id, lambda { |reference| "#{reference.author.truncate(15)}, #{reference.title.truncate(20)}, #{reference.year}"}), prompt:"Select Reference", class: "form-control"
+          =text_field_tag :keyword, "", class: "form-control", placeholder: "Type a keyword..."
+          =submit_tag "Search", class: "btn btn-primary"                   
+
+= form_tag :controller => :notes, :action => :actions_manager do
+
+  -# SEARCH RESULTS
+  .container-fluid.px-4
+    .scrolling-wrapper.flex-row.flex-nowrap.card-deck
+      - @current_search.each do |note|
+        %label.mt-3
+          =radio_button_tag :main_form, note.id, {}, class: "card-input-element d-none"
+          .card.note{style: "background-color: #{note.type.colour_code}"}
+            .card-body
+              %h5.card-title.text-truncate= note.title
+              %p.card-text.truncate-six-rows.text-wrap
+                -# displaying note content without html tags added by rich-text editor
+                = ActionView::Base.full_sanitizer.sanitize(note.content)
+
+  %hr
+
+  -# Thread Navigator
+  .d-flex.justify-content-between.align-items-center
+    %h3.card-title.mb-0.mx-3 Thread Navigator
+    .d-flex.justify-content-end
+      =submit_tag "Add Card To Right", class: "btn btn-primary mr-1"
+      =submit_tag "Start Subthread", class: "btn btn-primary mr-1"
+      =submit_tag "Previous Thread", class: "btn btn-primary mr-1"
+
+  .container-fluid.px-4
+    .scrolling-wrapper.flex-row.flex-nowrap.card-deck
+      - @current_thread.each do |note|
+        %label.mt-3
+          =radio_button_tag :main_form, note.id, {}, class: "card-input-element d-none"
+          .card.note{style: "background-color: #{note.type.colour_code}"}
+            .card-body
+              %h5.card-title.text-truncate= note.title
+              %p.card-text.truncate-six-rows.text-wrap
+                -# displaying note content without html tags added by rich-text editor
+                = ActionView::Base.full_sanitizer.sanitize(note.content)
+                
+  %hr
+
+  -# Branch Navigator
+  .d-flex.justify-content-between.align-items-center        
+    %h3.card-title.mb-0.mx-3 Branch Navigator
+    .d-flex.justify-content-end
+      =submit_tag "Show Thread Branches", class: "btn btn-primary mr-1"
+      =submit_tag "Remove Link", class: "btn btn-primary mr-1"
+
+  .container-fluid.px-4
+    .scrolling-wrapper.flex-row.flex-nowrap.card-deck
+      - @current_branches.each do |note|
+        %label.mt-3
+          =radio_button_tag :main_form, note.id, {}, class: "card-input-element d-none"
+          .card.note.mr-2.mb-1{style: "background-color: #{note.type.colour_code}"}
+            .card-body
+              %h5.card-title.text-truncate= note.title
+              %p.card-text.truncate-six-rows.text-wrap
+                -# displaying note content without html tags added by rich-text editor
+                = ActionView::Base.full_sanitizer.sanitize(note.content)
+
+  %nav#general.navbar.navbar-light.fixed-bottom
+    %span.navbar-brand.mb-0.h1 General Actions
+    %div
+      .d-flex.justify-content-end
+        =submit_tag "Go To Thread", class: "btn btn-primary mr-1"
+        =submit_tag "Edit", class: "btn btn-success mr-1"
+        =submit_tag "Delete", data: { confirm: "Are you sure?" }, class: "btn btn-danger mr-1" 
+        =submit_tag "Show Note Branches", class: "btn btn-primary mr-1"
+        -unless session[:link_from_note]
+          =submit_tag "Start Link From Note", class: "btn btn-primary mr-1"
+        -if session[:link_from_note]
+          =submit_tag "Undo Linking Mode", class: "btn btn-danger mr-1" 
+          =submit_tag "Land Link To Note", class: "btn btn-primary mr-1"
+    
+

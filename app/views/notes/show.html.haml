@@ -1,0 +1,24 @@
+-#%p#notice= notice
+.card.pb-2.px-2
+  .card-body
+    %h3.card-title.text-center.mb-3 Note details
+    %p
+      %b Title:
+      = @note.title
+    %p
+      %b Content:
+      = @note.content.html_safe
+    %p
+      %b Position:
+      = @note.position
+    %p
+      %b Thread:
+      = @note.thread_id
+    %p
+      %b Reference:
+      = @note.reference_id
+    %p
+      %b Type:
+      = @note.type_id
+    = link_to 'Edit', edit_note_path(@note), class: "btn btn-primary"
+    = link_to 'Back', notes_path, class: "btn btn-primary"

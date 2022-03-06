@@ -1,0 +1,26 @@
+-# notes/ edit.html.haml
+-# Form of editing notes
+-# Form includes title, reference, type, tag, content
+
+= simple_form_for(@note) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    =f.input :title, required: true
+    .form-row
+      .col 
+        %div
+          =f.association :reference, collection: current_user.references, :label_method => lambda { |reference| "#{reference.author.truncate(20)} / #{reference.title.truncate(30)} / #{reference.year}" } , value_method: :id
+          =f.association :type, collection: current_user.types, :label_method => lambda { |type| "#{type.type_name}" }, value_method: :id
+      .col   
+        
+        .border.pt-2.ml-2
+          =f.association :tags, collection: current_user.tags,  :label_method => lambda { |tag| "#{tag.tag_name}" }, value_method: :id, wrapper_html: { class: 'scroll px-3' }, as: :check_boxes
+    
+    =f.input :content, as: :summernote
+
+
+  .form-actions.mt-5
+    = f.button :submit, class: "btn-success"
+    = link_to 'Cancel', notes_path, class: "btn btn-primary"

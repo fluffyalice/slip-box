@@ -1,0 +1,7 @@
+28b13bbae1c99d9bbdc530029aa56e13ad6beaec		branch 'github-ci' of https://github.com/epigenesys/epi_deploy
+5aea3810487bec1f5e287303df32f152a9b135e3		branch 'master' of https://github.com/epigenesys/epi_deploy
+08eeca5cd9e1a0db7803343dfe6c7764764f0217		branch 'multi-customers' of https://github.com/epigenesys/epi_deploy
+9a36e08a6f86ade5106bade72cc0737952dc5da1		branch 'support-main' of https://github.com/epigenesys/epi_deploy
+d27a595e945f7744f51353d31b016dfbdf3c8df4		branch 'target-env' of https://github.com/epigenesys/epi_deploy
+36249d407edeaa3f44f9dc430c7b4ba9474c28df		branch 'ticket_workflow' of https://github.com/epigenesys/epi_deploy
+6357f5ef618fe1c2cf6bf3b58956f02ed881c917	not-for-merge	tag 'example_tag' of https://github.com/epigenesys/epi_deploy

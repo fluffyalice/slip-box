@@ -1,0 +1,19 @@
+-# references/_form.html.haml
+-# rendered to edit and new page
+-# forms include author, title, year, url, info
+
+-# frozen_string_literal: true
+= simple_form_for(@reference) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    =f.input :author, required: true
+    =f.input :title, required: true
+    =f.input :year
+    =f.input :url
+    =f.input :info
+
+  .form-actions.mt-5
+    = f.button :submit, class: "btn-success"
+    = link_to 'Cancel', references_path, class: "btn btn-primary"
